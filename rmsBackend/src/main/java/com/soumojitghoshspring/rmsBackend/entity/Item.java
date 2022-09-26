@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "item")
 public class Item {
@@ -32,27 +31,31 @@ public class Item {
 	@Column(name = "price")
 	private int price;
 
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH })
 	@JoinColumn(name = "type_id")
 	private FoodType foodType;
 
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "course_id")
 	private Course course;
 
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "cuisine_id")
 	private Cuisine cuisine;
 
-	Item(){
-		
+	Item() {
+
 	}
 
-	public Item(String title, String description, int isActive, int price) {
+	public Item(String title, String description, int isActive, int price, FoodType foodType, Course course,
+			Cuisine cuisine) {
 		this.title = title;
 		this.description = description;
 		this.isActive = isActive;
 		this.price = price;
+		this.foodType = foodType;
+		this.course = course;
+		this.cuisine = cuisine;
 	}
 
 	public int getId() {
@@ -118,6 +121,11 @@ public class Item {
 	public void setCuisine(Cuisine cuisine) {
 		this.cuisine = cuisine;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", title=" + title + ", description=" + description + ", isActive=" + isActive
+				+ ", price=" + price + ", foodType=" + foodType + ", course=" + course + ", cuisine=" + cuisine + "]";
+	}
+
 }
