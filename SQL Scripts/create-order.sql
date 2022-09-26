@@ -15,6 +15,9 @@ CREATE TABLE `order` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO restaurant_management_system.order(order_date,is_paid,payment_mode,table_id)
+VALUES ("2010-08-22",0,"Cash",1);
+
 DROP TABLE IF EXISTS `order_item`;
 
 CREATE TABLE `order_item` (
@@ -29,5 +32,8 @@ CREATE TABLE `order_item` (
   CONSTRAINT `FK_ITEM` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO restaurant_management_system.order_item(quantity,unit_price,order_id,item_id)
+VALUES (1,100,1,1);
 
 SET FOREIGN_KEY_CHECKS = 1;

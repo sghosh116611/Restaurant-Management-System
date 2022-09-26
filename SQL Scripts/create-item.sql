@@ -10,6 +10,10 @@ CREATE TABLE `food_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO food_type(type)
+VALUES ("Veg"),("Non-Veg");
+
+
 DROP TABLE IF EXISTS `cuisine`;
 
 CREATE TABLE `cuisine` (
@@ -17,6 +21,9 @@ CREATE TABLE `cuisine` (
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO cuisine(name)
+VALUES ("Indian");
 
 DROP TABLE IF EXISTS `course`;
 
@@ -26,6 +33,8 @@ CREATE TABLE `course` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO course(name)
+VALUES ("Main-Course");
 
 DROP TABLE IF EXISTS `item`;
 
@@ -46,5 +55,8 @@ CREATE TABLE `item` (
   CONSTRAINT `FK_CUISINE` FOREIGN KEY (`cuisine_id`) REFERENCES `cuisine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_COURSE` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO item(title,description,is_active,price,type_id,cuisine_id,course_id)
+VALUES ("Alu Dam Biryani","Biryani Test",1,100,1,1,1);
 
 SET FOREIGN_KEY_CHECKS = 1;
