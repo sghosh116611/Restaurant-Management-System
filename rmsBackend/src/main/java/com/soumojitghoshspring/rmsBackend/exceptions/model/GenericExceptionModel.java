@@ -1,16 +1,16 @@
 package com.soumojitghoshspring.rmsBackend.exceptions.model;
 
-public class FoodItemExceptionModel {
+public class GenericExceptionModel {
 
 	private String message;
 	private int status;
 	private long timeStamp;
 
-	public FoodItemExceptionModel() {
+	public GenericExceptionModel() {
 		
 	}
 
-	public FoodItemExceptionModel(String message, int status, long timeStamp) {
+	public GenericExceptionModel(String message, int status, long timeStamp) {
 		this.message = message;
 		this.status = status;
 		this.timeStamp = timeStamp;

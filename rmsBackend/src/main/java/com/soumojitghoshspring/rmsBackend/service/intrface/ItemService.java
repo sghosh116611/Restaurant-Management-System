@@ -1,4 +1,4 @@
-package com.soumojitghoshspring.rmsBackend.service;
+package com.soumojitghoshspring.rmsBackend.service.intrface;
 
 import java.util.List;
 import java.util.Optional;

@@ -16,44 +16,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.soumojitghoshspring.rmsBackend.entity.Employee;
 import com.soumojitghoshspring.rmsBackend.entity.Item;
+import com.soumojitghoshspring.rmsBackend.service.intrface.EmployeeService;
 import com.soumojitghoshspring.rmsBackend.service.intrface.ItemService;
 
 @RestController
 @RequestMapping("/api")
-public class ItemRestController {
+public class EmployeeRestController {
 
 	@Autowired
-	private ItemService itemService;
+	private EmployeeService employeeService;
 
-	@GetMapping("/items")
-	public List<Item> findAll(
+	@GetMapping("/employees")
+	public List<Employee> findAll(
 			@RequestParam(name="sort",required = false) Optional<List<String>> sort, 
 			@RequestParam(defaultValue="asc") String order ) {
-		return itemService.findAll(sort,order);
+		return employeeService.findAll(sort,order);
 	}
 
-	@GetMapping("/items/{itemId}")
-	public Item findItem(@PathVariable int itemId) {
-		return itemService.findItem(itemId);
+	@GetMapping("/employees/{employeeId}")
+	public Employee findItem(@PathVariable int employeeId) {
+		return employeeService.findEmployee(employeeId);
 	}
 
-	@PostMapping("/items")
-	public ResponseEntity<Item> save(@RequestBody Item item) {
-		itemService.save(item);
-		return new ResponseEntity<>(item, HttpStatus.OK);
+	@PostMapping("/employees")
+	public ResponseEntity<Employee> save(@RequestBody Employee employee) {
+		employeeService.save(employee);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
-	@PutMapping("/items")
-	public ResponseEntity<Item> update(@RequestBody Item item) {
-		itemService.save(item);
-		return new ResponseEntity<>(item, HttpStatus.OK);
+	@PutMapping("/employees")
+	public ResponseEntity<Employee> update(@RequestBody Employee employee) {
+		employeeService.save(employee);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/items/{itemId}")
-	public ResponseEntity<String> delete(@PathVariable int itemId) {
-		itemService.delete(itemId);
-		return new ResponseEntity<>("Deleted item with id : " + itemId, HttpStatus.OK);
+	@DeleteMapping("/employees/{employeeId}")
+	public ResponseEntity<String> delete(@PathVariable int employeeId) {
+		employeeService.delete(employeeId);
+		return new ResponseEntity<>("Deleted item with id : " + employeeId, HttpStatus.OK);
 	}
-
+	
 }

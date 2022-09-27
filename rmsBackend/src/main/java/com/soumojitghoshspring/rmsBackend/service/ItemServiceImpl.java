@@ -8,9 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.soumojitghoshspring.rmsBackend.dao.ItemDao;
+import com.soumojitghoshspring.rmsBackend.dao.intrface.ItemDao;
 import com.soumojitghoshspring.rmsBackend.entity.FoodType;
 import com.soumojitghoshspring.rmsBackend.entity.Item;
+import com.soumojitghoshspring.rmsBackend.service.intrface.ItemService;
 
 @Service
 public class ItemServiceImpl implements ItemService {

@@ -5,16 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.soumojitghoshspring.rmsBackend.exceptions.NoFoodItemFoundException;
-import com.soumojitghoshspring.rmsBackend.exceptions.model.FoodItemExceptionModel;
+import com.soumojitghoshspring.rmsBackend.exceptions.GenericCustomException;
+import com.soumojitghoshspring.rmsBackend.exceptions.model.GenericExceptionModel;
 
 @ControllerAdvice
-public class FoodItemExceptionHandler {
+public class GenericExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<FoodItemExceptionModel> handleException(NoFoodItemFoundException exc) {
+	public ResponseEntity<GenericExceptionModel> handleException(GenericCustomException exc) {
 
-		FoodItemExceptionModel error = new FoodItemExceptionModel();
+		GenericExceptionModel error = new GenericExceptionModel();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exc.getMessage());
@@ -26,9 +26,9 @@ public class FoodItemExceptionHandler {
 	}
 
 	@ExceptionHandler
-	public ResponseEntity<FoodItemExceptionModel> handleException(Exception exc) {
+	public ResponseEntity<GenericExceptionModel> handleException(Exception exc) {
 
-		FoodItemExceptionModel error = new FoodItemExceptionModel();
+		GenericExceptionModel error = new GenericExceptionModel();
 
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exc.getMessage());

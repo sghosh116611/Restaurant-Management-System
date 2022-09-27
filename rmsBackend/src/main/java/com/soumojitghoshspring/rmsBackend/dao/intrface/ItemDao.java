@@ -1,4 +1,4 @@
-package com.soumojitghoshspring.rmsBackend.dao;
+package com.soumojitghoshspring.rmsBackend.dao.intrface;
 
 import java.util.List;
 import java.util.Optional;
