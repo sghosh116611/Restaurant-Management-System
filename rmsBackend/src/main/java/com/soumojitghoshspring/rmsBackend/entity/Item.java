@@ -1,14 +1,21 @@
 package com.soumojitghoshspring.rmsBackend.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "item")
@@ -31,7 +38,7 @@ public class Item {
 	@Column(name = "price")
 	private int price;
 
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "type_id")
 	private FoodType foodType;
 
@@ -43,12 +50,16 @@ public class Item {
 	@JoinColumn(name = "cuisine_id")
 	private Cuisine cuisine;
 
+	@ManyToMany(mappedBy = "items")
+	@JsonIgnore
+	private List<Order> orders;
+
 	Item() {
 
 	}
 
 	public Item(String title, String description, int isActive, int price, FoodType foodType, Course course,
-			Cuisine cuisine) {
+			Cuisine cuisine, List<Order> orders) {
 		this.title = title;
 		this.description = description;
 		this.isActive = isActive;
@@ -56,6 +67,7 @@ public class Item {
 		this.foodType = foodType;
 		this.course = course;
 		this.cuisine = cuisine;
+		this.orders = orders;
 	}
 
 	public int getId() {
@@ -122,10 +134,19 @@ public class Item {
 		this.cuisine = cuisine;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", title=" + title + ", description=" + description + ", isActive=" + isActive
-				+ ", price=" + price + ", foodType=" + foodType + ", course=" + course + ", cuisine=" + cuisine + "]";
+				+ ", price=" + price + ", foodType=" + foodType + ", course=" + course + ", cuisine=" + cuisine
+				+ ", orders=" + orders + "]";
 	}
 
 }

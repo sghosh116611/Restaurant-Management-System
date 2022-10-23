@@ -8,11 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.soumojitghoshspring.rmsBackend.dao.intrface.EmployeeDAO;
 import com.soumojitghoshspring.rmsBackend.dao.intrface.EmployeeTypeDAO;
-import com.soumojitghoshspring.rmsBackend.entity.Employee;
 import com.soumojitghoshspring.rmsBackend.entity.EmployeeType;
-import com.soumojitghoshspring.rmsBackend.service.intrface.EmployeeService;
 import com.soumojitghoshspring.rmsBackend.service.intrface.EmployeeTypeService;
 
 @Service

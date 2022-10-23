@@ -1,7 +1,7 @@
 package com.soumojitghoshspring.rmsBackend.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -9,37 +9,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.soumojitghoshspring.rmsBackend.dao.intrface.ItemDao;
+import com.soumojitghoshspring.rmsBackend.dao.intrface.OrderDAO;
 import com.soumojitghoshspring.rmsBackend.entity.Item;
+import com.soumojitghoshspring.rmsBackend.entity.Order;
 import com.soumojitghoshspring.rmsBackend.service.intrface.ItemService;
+import com.soumojitghoshspring.rmsBackend.service.intrface.OrderService;
 
 @Service
-public class ItemServiceImpl implements ItemService {
+public class OrderServiceImpl implements OrderService {
 
 	@Autowired
-	ItemDao itemDao;
+	private OrderDAO orderDAO;
 
 	@Override
 	@Transactional
-	public List<Item> findAll(Optional<List<String>> sort, String order) {
-		return itemDao.findAll(sort,order);
+	public List<Order> getAll() {
+		return orderDAO.getAll();
 	}
 
 	@Override
 	@Transactional
-	public Item findItem(int itemId) {
-		return itemDao.findItem(itemId);
+	public Order get(int orderId) {
+		return orderDAO.get(orderId);
 	}
 
 	@Override
 	@Transactional
-	public void save(Item item) {
-		itemDao.save(item);
-	}
+	public void save(Order order) {
+		orderDAO.save(order);
 
-	@Override
-	@Transactional
-	public void delete(int itemId) {
-		itemDao.delete(itemId);
 	}
 
 }

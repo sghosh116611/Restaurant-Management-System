@@ -13,9 +13,9 @@ CREATE TABLE `table_type` (
 INSERT INTO restaurant_management_system.table_type(type)
 VALUES("Open Air");
 
-DROP TABLE IF EXISTS `table`;
+DROP TABLE IF EXISTS `table_details`;
 
-CREATE TABLE `table` (
+CREATE TABLE `table_details` (
   `id` int(30) NOT NULL AUTO_INCREMENT,
   `capacity` int(10)  NOT NULL,
   `type_id` int(30)  NOT NULL,
@@ -36,11 +36,12 @@ CREATE TABLE `table_request` (
   `request_date` DATE  NOT NULL,
   `mobile` int  NOT NULL,
   `seating_capacity` int  NOT NULL,
+  `email` varchar(45)  NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO restaurant_management_system.table_request(full_name,request_date,mobile,seating_capacity)
-VALUES("John Doe","2010-08-22",112234455,2);
+INSERT INTO restaurant_management_system.table_request(full_name,request_date,mobile,seating_capacity,email)
+VALUES("John Doe","2010-08-22",112234455,2,"ghsohsoumojit53@gmail.com");
 
 DROP TABLE IF EXISTS `table_book`;
 
